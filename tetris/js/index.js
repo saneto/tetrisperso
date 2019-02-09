@@ -7,6 +7,9 @@ const context = canvas.getContext('2d');
 
 context.scale(20, 20);
 
+/*
+    la méthode qui charge notre jeu, si vous mettez un système de routage en place on utilisera celle la
+ */
 function loadgame()
 {
 	const pos = new Pos(0, 0);
@@ -18,15 +21,4 @@ function loadgame()
     scroll.start();
 }
 
-function playerDrop() {
-    player.pos.y++;
-    if (collide(arena, player)) {
-        player.pos.y--;
-        merge(arena, player);
-        playerReset();
-        arenaSweep();
-        updateScore();
-    }
-    dropCounter = 0;
-}
 loadgame();

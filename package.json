@@ -1,0 +1,23 @@
+{
+  "name": "tetrisperso",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve ./tetris",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saneto/tetrisperso.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saneto/tetrisperso/issues"
+  },
+  "homepage": "https://github.com/saneto/tetrisperso#readme",
+  "dependencies": {
+    "serve": "^10.1.2"
+  }
+}

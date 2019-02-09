@@ -35,7 +35,7 @@ function drawTetrisMatrix(matrix, offset){
 }
 
 
-//création de la pièce aléatoirement
+//génére la prochaine piece aléatoirement parmi une selection
 function playerReset() {
     /*const pieces = 'TJLOSZI';
     values.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);

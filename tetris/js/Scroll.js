@@ -7,6 +7,14 @@
 import Entity from '/js/Entity.js';
 import ControleFram from '/js/ControleFram.js';
 export default class Scroll{
+
+	//
+	/*
+		la partie la plus importante est le update!
+		la fonction du update est en boucle infinie, c'est le seul moyen que j'ai trouvé pour exploiter la méthode
+		requestAnimationFrame sans avoir tous les attributs à nul
+	 */
+	//
 	constructor(dropCounter, dropInterval,lastTime, context, canvas,entity)
 	{
 		this.lastTime = lastTime;
@@ -53,6 +61,10 @@ export default class Scroll{
 		}
 	}
 
+	/*
+		la méthode regroupe toute les méthodes dont on a besoin pour déssiner nous carrés
+	 */
+
 	draw(arena, matrix, pos) {
 	    this.context.fillStyle = '#000';
 	    this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -61,12 +73,19 @@ export default class Scroll{
 	    this.drawMatrix(matrix, pos);
 	}
 
+	/*
+		permet de boucler à l'infinie sur se que l'on veut faire,
+		je vous invite à aller chercher sur internet pour plus d'information sur la méthode natif
+		requestAnimationFrame 
+	 */
     enqueue() {
     	requestAnimationFrame(this.update);
     	
     }
 
-
+    /*
+    	c'est ici que les carrés sont déssinés un par un + leur css
+     */
 	drawMatrix(matrix, offset) {
 	    matrix.forEach((row, y) => {
 	        row.forEach((value, x) => {
@@ -80,6 +99,10 @@ export default class Scroll{
 	    });
 	}
 
+	/*
+		la méthode vérifier la collision entre les éléments envoyer en paramètre
+		celle-la commes les précédentes peuvent être sorti dans un fichier à part
+	 */
 	collide(arena, matrix, pos) {
 	    const m = matrix;
 	    const o = pos;
@@ -95,6 +118,9 @@ export default class Scroll{
 	    return false;
 	}
 
+	/*
+		la méthode qui run notre schmilblick!
+	 */
 	start() {
         this.enqueue();
     }
