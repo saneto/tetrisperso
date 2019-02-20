@@ -6,7 +6,7 @@
  */
 
 export default class entity{
-	constructor(pos,  score, matrix)
+	constructor(pos ,  score, matrix)
 	{
 		this.pos = pos;
 		this.matrix= matrix;
@@ -39,8 +39,8 @@ export default class entity{
             [0, 1, 0, 0],
             [0, 1, 0, 0],
         ];
-	    this.pos.y = 0;
-	    this.pos.x = (this.arena[0].length / 2 | 0) -
+	    this.y = 0;
+	    this.x = (this.arena[0].length / 2 | 0) -
 	                   (this.matrix[0].length / 2 | 0);
 	    if (this.collide()) {
 	        this.arena.forEach(row => row.fill(0));
@@ -49,9 +49,9 @@ export default class entity{
 	    }
 	}
 
-	setPos(pos)
+	setPos(pos )
 	{
-		this.pos= pos;
+        this.pos = pos;
 	}
 
 	/*
@@ -61,7 +61,6 @@ export default class entity{
 	    this.matrix.forEach((row, y) => {
 	        row.forEach((value, x) => {
 	            if (value !== 0) {
-	            	console.log(this.pos.y)
 	                this.arena[y + this.pos.y][x + this.pos.x] = value;
 	            }
 	        });
@@ -74,7 +73,6 @@ export default class entity{
 	    outer: for (let y = this.arena.length -1; y > 0; --y) {
 	        for (let x = 0; x < this.arena[y].length; ++x) {
 	            if (this.arena[y][x] === 0) {
-	                console.log(this.arena[y][x])
 	                continue outer;
 	            }
 	        }
@@ -97,7 +95,7 @@ export default class entity{
 		this.updateScore();
 	}
 
-	updateScore(score) {
+	updateScore() {
 	    document.getElementById('score').innerText = this.score;
 	}
 	/*
@@ -105,16 +103,16 @@ export default class entity{
 	 */
 	collide() {
 	    const m = this.matrix;
-	    const o = this.pos;
-	    for (let y = 0; y < m.length; ++y) {
-	        for (let x = 0; x < m[y].length; ++x) {
-	            if (m[y][x] !== 0 &&
-	               (this.arena[y + o.y] &&
-	                this.arena[y + o.y][x + o.x]) !== 0) {
-	                return true;
-	            }
-	        }
-	    }
+        const o = this.pos;
+        for (let y = 0; y < m.length; ++y) {
+            for (let x = 0; x < m[y].length; ++x) {
+                if (m[y][x] !== 0 &&
+                    (this.arena[y + o.y] &&
+                        this.arena[y + o.y][x + o.x]) !== 0) {
+                    return true;
+                }
+            }
+        }
 	    return false;
 	}
 

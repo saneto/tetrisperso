@@ -1,6 +1,6 @@
 /*
-	permet la création du canvas, je suis aps sur que l'utilise à voir.
- */
+	Class createCanvas qui permet la création du canvas
+*/
 export default class createCanvas {
 	constructor(area) {
 		this.area = area;

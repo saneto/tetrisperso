@@ -1,9 +1,3 @@
-
-/*
-
- */
-
-
 import Entity from '/js/Entity.js';
 import ControleFram from '/js/ControleFram.js';
 export default class Scroll{
@@ -37,7 +31,6 @@ export default class Scroll{
 		this.update = (time ) => {
 			this.ControleFram.updateTimer()
 		    if (this.ControleFram.checkFps()) {
-			console.log(entity.pos)
 		    	const deltaTime = time - this.lastTime;	
 			    this.dropCounter += deltaTime;
 			    if (this.dropCounter > this.dropInterval) {
@@ -125,6 +118,3 @@ export default class Scroll{
         this.enqueue();
     }
 }
-
-
-

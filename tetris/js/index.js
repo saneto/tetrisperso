@@ -1,24 +1,18 @@
-import Scroll from '/js/Scroll.js';
-import Entity from '/js/Entity.js';
-import Pos from '/js/Pos.js';
+import Router from '/js/Router.js';
 
-const canvas = document.getElementById('tetris');
-const context = canvas.getContext('2d');
 
-context.scale(20, 20);
-
-/*
-    la méthode qui charge notre jeu, si vous mettez un système de routage en place on utilisera celle la
- */
-function loadgame()
+function loadview()
 {
-	const pos = new Pos(0, 0);
-	const user = new Entity(pos,null , 0);
-    const scroll = new Scroll(0, 1000, 0,context, canvas, user);
-	user.updateScore();
+    const id = 'view';
+    const router = new Router();
+    router.addroute("", '/home', id);
+    router.addroute("game", '/gameView', id);
+    router.addroute("score", '/score', id);
+    window.addEventListener('hashchange', router.router());
+    window.addEventListener('load', router.router());
 
-    user.playerReset();
-    scroll.start();
 }
 
-loadgame();
+loadview();
+
+
